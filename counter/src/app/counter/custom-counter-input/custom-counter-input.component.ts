@@ -14,7 +14,8 @@ export class CustomCounterInputComponent {
   constructor(private store: Store<{counter: CounterState}>) {}
 
   onAdd(){
-    this.store.dispatch(customIncrement({value: this.value}));
+  
+   this.store.dispatch(customIncrement({count: +this.value}));
   }
 
 }

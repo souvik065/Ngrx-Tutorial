@@ -1,4 +1,4 @@
-import { CustomCounterInputComponent } from './../custom-counter-input/custom-counter-input.component';
+
 import { createAction, props } from "@ngrx/store";
 
 export const increment = createAction('increment');
@@ -7,6 +7,6 @@ export const reset = createAction('reset');
 
 export const customIncrement = createAction(
     'customincrement', 
-    props<{value: number}>()
+    props<{count: number}>()
 );
 

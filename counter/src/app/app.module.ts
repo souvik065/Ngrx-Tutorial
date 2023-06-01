@@ -1,6 +1,6 @@
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducer } from './store/app.store';
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,7 +32,9 @@ import { PostsListComponent } from './posts/posts-list/posts-list.component';
     AppRoutingModule,
     FormsModule,
     StoreModule.forRoot(appReducer),
-   
+    StoreDevtoolsModule.instrument({
+      logOnly: !isDevMode()
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

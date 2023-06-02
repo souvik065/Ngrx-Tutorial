@@ -1,5 +1,5 @@
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { appReducer } from './store/app.store';
+import { appReducer } from './store/app.state';
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 

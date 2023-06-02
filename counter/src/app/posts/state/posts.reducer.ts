@@ -4,6 +4,6 @@ import { initialState } from "./posts.state";
 
 const _postReducer = createReducer(initialState)
 
-export function postReducer(state,action){
-    return _postReducer(state,action);
+export function postReducer(state, action){
+    return _postReducer(state, action);
 }

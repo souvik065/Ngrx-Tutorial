@@ -4,6 +4,7 @@ import {Store} from '@ngrx/store';
 import { CounterState } from '../state/counter.state';
 import { customIncrement, changeChannelName } from '../state/counter.action';
 import { getName } from '../state/counter.selectors';
+import { AppState } from 'src/app/store/app.state';
 
 @Component({
   selector: 'app-custom-counter-input',
@@ -15,7 +16,7 @@ export class CustomCounterInputComponent {
   value: number;
   Name$:Observable<string>;
 
-  constructor(private store: Store<{counter: CounterState}>) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void{
 

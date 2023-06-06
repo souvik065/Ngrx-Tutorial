@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
 import { getPostById } from '../state/posts.selectors';
 import { Post } from 'src/app/models/posts.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { updatePost } from '../state/posts.actions';
 
 
 @Component({
@@ -17,10 +18,14 @@ export class EditPostComponent implements OnInit,OnDestroy{
   post:Post;
   postForm:FormGroup;
   postSubscription:Subscription;
-  constructor(private router:ActivatedRoute, private store:Store<AppState>){}
+  constructor(
+    private route:ActivatedRoute,
+    private store:Store<AppState>,
+    private router:Router
+     ){}
 
   ngOnInit(): void {
-      this.router.paramMap.subscribe((params)=>{
+      this.route.paramMap.subscribe((params)=>{
         const id = params.get('id');
         this.store.select(getPostById, {id}).subscribe((data)=>{
           this.post = data;
@@ -41,6 +46,26 @@ export class EditPostComponent implements OnInit,OnDestroy{
 
         ])
     });
+  }
+
+
+  onSubmit(){
+    if (!this.postForm.valid){
+      return
+    }
+
+    const title = this.postForm.value.title;
+    const description = this.postForm.value.description;
+
+    const post:Post={
+      id:this.post.id,
+      title,
+      description,
+    }
+
+    //Dispatch the action
+    this.store.dispatch(updatePost({post}));
+    this.router.navigate(['post']);
   }
 
   ngOnDestroy(): void {

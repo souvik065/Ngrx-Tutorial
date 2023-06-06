@@ -21,7 +21,10 @@
                     <td>
                         <a href="" 
                         class="btn btn-primary" 
-                        [routerLink]="['edit',post.id]">Update</a>
+                        [routerLink]="['edit',post.id]">Update</a>&nbsp;
+                        <button 
+                        (click)="onDeletePost(post.id!)"
+                        class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
             </tbody>

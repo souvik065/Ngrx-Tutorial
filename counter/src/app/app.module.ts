@@ -19,9 +19,7 @@ import { EditPostComponent } from './posts/edit-post/edit-post.component';
     
     HomeComponent,
     HeaderComponent,
-    PostsListComponent,
-    AddPostComponent,
-    EditPostComponent
+    
   ],
   imports: [
     BrowserModule,
